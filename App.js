@@ -1,61 +1,22 @@
-import React,{useState} from 'react';
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
-// Aşağıda navigasyon için gerekli kütüphaneleri görüyoruz.
-
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import HomeScreen from './screens/Homepage'
-import RegisterScreen from './screens/RegisterForm'
-import LoginScreen from './screens/LoginForm'
-import SearchScreen from './screens/SearchPage'
-
-import AuthProvider, { useAuth } from './AuthContext';
-
-
+import LoginScreen from './screens/LoginScreen';
+import HomeScreen from './screens/HomeScreen';
+import SearchScreen from './screens/SearchScreen';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-
-  // Bütün screenlerimiz burada Navigator ve Stack yapısı ile oluşturulmaktadır.
-
-
-  const Navigator = () => {
-
-    const [user] = useAuth()
-
-
-
-    // user değeri ile oynayarak burada form yapısına ulaşıp instagram ana sayfasına yönlenebilirsiniz.
-    // program içinde hata varsa bu şekilde diğer aşamaları görebilirsiniz.
-    console.log(user)
-
-    if(user){
-      return(
-      <Stack.Navigator>
-        <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}}/>  
-        <Stack.Screen name="Register" component={RegisterScreen} options={{headerShown: false}}/> 
-      </Stack.Navigator>
-      )
-    }
-
-    // user olmadığı zaman uygulama
-
-    return(
-        <Stack.Navigator>
-            <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>
-            <Stack.Screen name="Search" component={SearchScreen} />
-        </Stack.Navigator>
-    )
-  }
-
   return (
     <NavigationContainer>
-      <AuthProvider>
-        <Navigator />
-      </AuthProvider>
+      <Stack.Navigator>
+        <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
+        <Stack.Screen options={{ headerShown: true }} name="Search" component={SearchScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
