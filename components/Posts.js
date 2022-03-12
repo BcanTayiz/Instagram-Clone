@@ -166,7 +166,7 @@ const Posts = () => {
                         )
                         
                       }) : ''}</View>
-                    </View>
+                      </View>
                     </View>
                     
                   </View>

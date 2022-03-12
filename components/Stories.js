@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image,TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Image,TouchableOpacity, Dimensions} from 'react-native'
 import React from 'react'
 
 const Stories = () => {
@@ -44,8 +44,8 @@ export default Stories
 
 const styles = StyleSheet.create({
     ImageStyle:{
-        height:70,
-        width:70,
+        height: Dimensions.get('window').width/4,
+        width: Dimensions.get('window').width/6.2,
         resizeMode:'stretch',
         zIndex:3
     },
@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
         zIndex:1,
     },
     imageContainer:{
+        width:'20%',
         margin:1,
         padding:1,
         zIndex:2,

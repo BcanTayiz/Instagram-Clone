@@ -103,12 +103,15 @@ const styles = StyleSheet.create({
         maxWidth:'100%',
         maxHeight:'100%',
         marginTop:5,
-        marginBottom:5
+        marginBottom:5,
+        width:'100%'
     },
     object:{
-        width:'30%',
+        width:'33%',
         height: 150,
-        borderColor:'black'
+        borderColor:'black',
+        margin:10,
+        padding:10
     },
     video: {
         position: 'absolute',
