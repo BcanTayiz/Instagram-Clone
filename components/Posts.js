@@ -33,7 +33,6 @@ const Posts = () => {
     const [status, setStatus] = useState({});
     const [commentText,setCommentText] = useState([])
     const [commentList,setCommentList] = useState([])
-    const [userToComment,setUSerToComment] = useState('')
 
     const [posts, setPosts] = useState([])
     
@@ -58,8 +57,8 @@ const Posts = () => {
     }
 
     const setCommentTextFunc = () => {
-          setCommentList([...commentList,commentText])
-          setUSerToComment(createCommenterUser)
+          setCommentList([...commentList,createCommenterUser() + ' : ' + commentText])
+          
           console.log(commentList)
     }
 
@@ -162,7 +161,7 @@ const Posts = () => {
                         {commentList.length > 0 ? commentList.map(comment => {
                         return(
                           <View  key={uuidv4()}>
-                            <Text>{userToComment}: {comment}</Text>
+                            <Text>{comment}</Text>
                           </View>
                         )
                         

@@ -34,13 +34,15 @@ const HomeScreen = ({navigation}) => {
         <Text>Email: {auth.currentUser?.email}</Text>
         <TouchableOpacity
           onPress={handleSignOut}
-          style={styles.button}
+          style={styles.buttonContainer}
         >
           <Text style={styles.buttonText}>Sign out</Text>
         </TouchableOpacity>
       </View>
-     
-     
+        <View>
+          <Text style={{marginBottom:10,textAlign:'center'}}>Barış Can Tayiz Kompanion Case</Text>
+        </View>
+
     </SafeAreaView>
   )
 }
@@ -50,6 +52,7 @@ export default HomeScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginBottom:20,
   },
   downContainer:{
     flex:2,
@@ -60,17 +63,20 @@ const styles = StyleSheet.create({
     marginBottom:100,
     paddingBottom:20,
   },
-   button: {
+  buttonContainer: {
     backgroundColor: '#0782F9',
     width: '60%',
+    height:60,
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
-    marginTop: 40,
+    marginTop: 20,
+    marginBottom:10,
   },
   buttonText: {
     color: 'white',
     fontWeight: '700',
     fontSize: 16,
+    marginBottom:20
   },
 })
