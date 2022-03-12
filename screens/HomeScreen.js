@@ -52,11 +52,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   downContainer:{
-    flex:1,
+    flex:2,
     alignContent:'center',
     justifyContent:'center',
     alignItems:'center',
     marginTop:100,
+    marginBottom:100,
+    paddingBottom:20,
   },
    button: {
     backgroundColor: '#0782F9',

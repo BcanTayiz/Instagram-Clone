@@ -138,12 +138,13 @@ const styles = StyleSheet.create({
     searchBar:{
       width: (Dimensions.get('window').width+50) / 3,
       height:30,
-      zIndex:100
+      fontSize: 2,
     },
     searchBarModal:{
       width: '90%',
       height:30,
-      zIndex:100
+      zIndex:100,
+      fontSize: 2
     },
     video: {
       position: 'absolute',
