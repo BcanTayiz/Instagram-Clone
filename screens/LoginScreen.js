@@ -19,7 +19,8 @@ const LoginScreen = () => {
     return unsubscribe
   }, [])
 
-  const handleSignUp = () => {
+  const handleSignUp = (e) => {
+    e.preventDefault()
     auth
       .createUserWithEmailAndPassword(email, password)
       .then(userCredentials => {
@@ -29,7 +30,8 @@ const LoginScreen = () => {
       .catch(error => alert(error.message))
   }
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault()
     auth
       .signInWithEmailAndPassword(email, password)
       .then(userCredentials => {
@@ -70,17 +72,17 @@ const LoginScreen = () => {
       </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          onPress={handleLogin}
+        <TouchableOpacity type="submit" 
+          onPress={(e) => handleLogin(e)}
           style={styles.button}
         >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={handleSignUp}
+        <TouchableOpacity type="submit" 
+          onPress={(e) => handleSignUp(e)}
           style={[styles.button, styles.buttonOutline]}
         >
-          <Text style={styles.buttonOutlineText}>Register</Text>
+          <Text type="submit" style={styles.buttonOutlineText}>Register</Text>
         </TouchableOpacity>
       </View>
       <View>

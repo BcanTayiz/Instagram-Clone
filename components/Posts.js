@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View,FlatList, ScrollView, SafeAreaView,Image,Dimensions,TouchableOpacity,TextInput } from 'react-native'
 import React,{useState,useEffect,useRef} from 'react';
 import { createServer } from "miragejs";
+import EmojiSelector,{ Categories } from 'react-native-emoji-selector'
 
 import { Video, AVPlaybackStatus } from 'expo-av';
 import { posts } from '../public/MockAPI';
@@ -34,6 +35,11 @@ const Posts = () => {
     const [commentText,setCommentText] = useState([])
     const [commentList,setCommentList] = useState([])
 
+    const [contentId,setContentId] = useState(null)
+
+    const [emojiState,setEmojiState] = useState(false)
+    const [emoji,setEmoji] = useState(null)
+
     const [posts, setPosts] = useState([])
     
     var [active,setActive] = useState(0)
@@ -56,12 +62,17 @@ const Posts = () => {
         }
     }
 
-    const setCommentTextFunc = () => {
-          setCommentList([...commentList,createCommenterUser() + ' : ' + commentText])
+    const setCommentTextFunc = (index) => {
+          setContentId(index)
+          setEmojiState(true)
+          setCommentList([...commentList,{'id':index,'comment':createCommenterUser() + ' : ' + commentText }]) /* +  emoji*/
           
           console.log(commentList)
     }
 
+
+    /* This part is used to create diferent user hashes  */
+    /* The generating code for every different user is kind of seperating code for different IDs */
     const createCommenterUser = () => {
       const list = ['X','Y','W','a','b','c','1','2',',3','4','5','6']
       let person = 'User-'
@@ -79,7 +90,7 @@ const Posts = () => {
       return(
        
         <SafeAreaView>
-        {posts.map((post) => (
+        {posts.map((post,index) => (
           <View key={post.id} style={styles.container}>
               <View style={styles.upperContainer}>
                   <Image  source={{uri: post.profile_pic}} style={styles.imageProfil}/>
@@ -150,9 +161,17 @@ const Posts = () => {
                       placeholder='Add a comment...' onChangeText={(text) => setCommentText(text)}
                     />
                     <TouchableOpacity>
-                      <Icon name="emoji-happy" style={{color:'blue',position:'absolute',flex:1,bottom:15,left:10,fontSize:12}}/>
+                      <TouchableOpacity style={styles.emojiClass} onPress={setCommentTextFunc}>
+                          <Text>😊</Text>
+                      </TouchableOpacity>
+                      {/* Tried to use Emojis but there is not enoughs source right now
+                        (
+                        emojiState === true ? <EmojiSelector 
+                        onEmojiSelected={emoji => setEmoji(emoji)} /> : <Text>||</Text>
+                        )
+                        */}
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={setCommentTextFunc}>
+                    <TouchableOpacity onPress={( ) => setCommentTextFunc(post.id-1)}>
                       <Text style={{color:'blue',position:'absolute',flex:1,bottom:7,right:10,fontSize:12}}>Post</Text>
                       
                     </TouchableOpacity>
@@ -161,11 +180,11 @@ const Posts = () => {
                         {commentList.length > 0 ? commentList.map(comment => {
                         return(
                           <View  key={uuidv4()}>
-                            <Text>{comment}</Text>
+                            <Text>{ comment['id'] === post.id-1 ? comment['comment'] : '' }</Text>
                           </View>
                         )
                         
-                      }) : ''}</View>
+                      }) : (<Text></Text>)}</View>
                       </View>
                     </View>
                     
@@ -224,6 +243,11 @@ const styles = StyleSheet.create({
     },
     saveIcon:{
         marginLeft:Dimensions.get('window').width - 160,
+    },
+    emojiClass:{
+      position:'absolute',
+      bottom:7,
+      left:5,
     },
     imageProfil:{
         width:30,

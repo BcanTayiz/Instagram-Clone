@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/core'
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View,SafeAreaView } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View,SafeAreaView, } from 'react-native'
 import { auth } from '../firebase'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
@@ -21,6 +21,8 @@ const HomeScreen = ({navigation}) => {
       })
       .catch(error => alert(error.message))
   }
+
+  /* Home screen carries the most of the components and screens for to show most the data */
 
   return (
     <SafeAreaView style={styles.container}>

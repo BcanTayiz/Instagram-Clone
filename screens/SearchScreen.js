@@ -97,21 +97,21 @@ export default SearchPage
 
 // Style yapıları aşağıdaki gibidir.
 const styles = StyleSheet.create({
-    visiualContainer:{
+  visiualContainer:{
         flex:1,
         flexDirection:'row',
         maxWidth:'100%',
         maxHeight:'100%',
-        marginTop:5,
-        marginBottom:5,
+        margin:5,
+        padding:3,
         width:'100%'
     },
     object:{
-        width:'33%',
+        width:Dimensions.get('window').width/3.5,
         height: 150,
         borderColor:'black',
-        margin:10,
-        padding:10
+        margin:4,
+        padding:4
     },
     video: {
         position: 'absolute',

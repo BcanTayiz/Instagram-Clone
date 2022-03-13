@@ -46,8 +46,7 @@ const styles = StyleSheet.create({
     ImageStyle:{
         height: Dimensions.get('window').width/4,
         width: Dimensions.get('window').width/6.2,
-        resizeMode:'stretch',
-        zIndex:3
+        resizeMode:'contain',
     },
     storyContainer:{
         flex:1,
@@ -55,12 +54,14 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         flexDirection:'row',
         padding:16,
-        zIndex:1,
     },
     imageContainer:{
-        width:'20%',
-        margin:1,
-        padding:1,
+        width:Dimensions.get('window').width/5.2,
+        marginLeft:2,
+        marginRight:2,
+        paddingLeft:1,
+        paddingRight:1,
         zIndex:2,
+        height:100
     }
 })
