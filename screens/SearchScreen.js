@@ -32,7 +32,10 @@ if (window.server) {
 
 
 // Search yapısındaki postların rastgele dağıtılmasını sağlar.
+// Istenilen algoritma tipi olarak bu fonksiyonu uygun gördüm.
 function randomArrayShuffle(array) {
+
+
     var currentIndex = array.length, temporaryValue, randomIndex;
     while (0 !== currentIndex) {
         randomIndex = Math.floor(Math.random() * currentIndex);

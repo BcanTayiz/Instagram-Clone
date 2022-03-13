@@ -19,19 +19,28 @@ const HomeScreen = ({navigation}) => {
       .catch(error => alert(error.message))
   }
 
-  /* Login ve Signup işlemleri burada yer alıyor. */
+
   /* Home içinde direk navigasyon koymamın sebebi auth işleminde çok hakim olamam */
-  /* firebase versiyon veya kullanımda bir sorun yaşadığım için home içine yönlendirme yaptım */
+  /* Auth için youtube ve google içindeki aramalarım sonucunde en kısa çözümü bulmaya çalıştım */
+  /* bunun sonucundaki materyal içindeki çözüm hataları yardımcı olmadı */
+  /* Diğer yapıları bozmaması amacı ile home navigasyonu direk oluşturdum */
+
 
   return (
     <SafeAreaView style={styles.container}>
       <View >
+
+        {// bütün home componenetleri burada toplanıyor.
+        }
         <Header navigation={navigation}/>
         <Stories />
         <Posts />
       </View>
-
       <View style={styles.downContainer}>
+        {
+          // login sayfasına buradan dönüş yapabiliyoruz.
+          // en alltaki bölümü home ile görebilirsiniz.
+        }
         <Text>Email: {auth.currentUser?.email}</Text>
         <TouchableOpacity
           onPress={handleSignOut}

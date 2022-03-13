@@ -9,6 +9,7 @@ import SearchScreen from './screens/SearchScreen';
 
 const Stack = createNativeStackNavigator();
 
+
 export default function App() {
   return (
     <NavigationContainer>

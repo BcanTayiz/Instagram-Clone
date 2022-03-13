@@ -1,6 +1,11 @@
 import { StyleSheet, Text, View, Image,TouchableOpacity, Dimensions} from 'react-native'
 import React from 'react'
 
+
+// Bu bölüm tamamen dummy olarak oluşturuldu
+// daha sonrasında textler de veriden değil manul olarak yazdım.
+// buraya da api çekerek map işlemi ile yazabilirdim fakat bu şekilde durmasını da uygun bulduğumu söyleyebilirim.
+
 const Stories = () => {
   return (
     <View style={styles.storyContainer}>

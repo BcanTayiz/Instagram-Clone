@@ -3,18 +3,24 @@ import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View,Image } from 'react-native'
 import { auth } from '../firebase'
 
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
 
   /* Login ve Signup işlemleri burada yer alıyor. */
 
     /* firebase versiyon veya kullanımda bir sorun yaşadığım için home içine yönlendirme yaptım */
 
+  // https://www.youtube.com/watch?v=ql4J6SpLXZA applying these steps eventually didn't work for auth
+  // I get 
+  //Firebase: A network AuthError 
+  //(such as timeout, interrupted connection or unreachable host) has occurred. (auth/network-request-failed).
+  // error probably not matching sdk and other network problems.
+  // I try to solve this auth problem after with remaining time.
 
-const LoginScreen = () => {
+
+const LoginScreen =  () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  console.log(auth)
 
   const navigation = useNavigation()
 
@@ -28,7 +34,7 @@ const LoginScreen = () => {
     return unsubscribe
   }, [])
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault()
     auth
       .createUserWithEmailAndPassword(email, password)
@@ -39,7 +45,7 @@ const LoginScreen = () => {
       .catch(error => alert(error.message))
   }
 
-  const handleLogin = (e) => {
+  const handleLogin = async(e) => {
     e.preventDefault()
     auth
       .signInWithEmailAndPassword(email, password)
@@ -68,13 +74,15 @@ const LoginScreen = () => {
         <TextInput
           placeholder="Email"
           value={email}
+          type="e-mail"
           onChangeText={text => setEmail(text)}
           style={styles.input}
         />
         <TextInput
           placeholder="Password"
           value={password}
-          onChangeText={text => setPassword(text)}
+          type="password"
+          onChangeText={(password) => setPassword(password)}
           style={styles.input}
           secureTextEntry
         />

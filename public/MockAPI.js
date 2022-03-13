@@ -1,5 +1,7 @@
 
-
+// migrate.js ile aldığım veriler.
+// https://miragejs.com/quickstarts/react-native/react-native-testing-library/ 
+// buradan mirage api yapısına ulaşabiliyorsunuz.
 
 export const posts = [
     { id: 1,
