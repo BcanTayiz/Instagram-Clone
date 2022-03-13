@@ -2,6 +2,7 @@ import { SafeAreaView, StyleSheet, Text, View,ScrollView ,FlatList,Image,Dimensi
 import React ,{useState,useEffect, useRef} from 'react'
 import { Searchbar } from 'react-native-paper';
 import { createServer } from "miragejs";
+// Overlayı daha sonradan modal olarak açılacak arama tabı ve görseller için ekliyorum
 import { Overlay } from 'react-native-elements'
 
 import { posts } from '../../public/MockAPI';
@@ -11,7 +12,7 @@ import { Video, AVPlaybackStatus } from 'expo-av';
 const {width} = Dimensions.get("window") 
 const height = width * 0.3
 
-
+// mirage js API servisi MOCK API için postu burada çekiyorum.
 window.server = createServer({
     routes() {
       this.get("http://localhost:19000/api/posts", () => {
@@ -24,6 +25,9 @@ window.server = createServer({
 
 const SearchBarComponent = ( ) => {
 
+  // usestate yapılarında posts gerekli veri ypaısı
+  // search data ise comment ile yapılmış yapılar
+
   const [posts, setPosts] = useState([])
   const [searchData,setSearchData] = useState('')
 
@@ -34,6 +38,8 @@ const SearchBarComponent = ( ) => {
     setSearchData(event)
   } 
 
+
+   // fetch API useeffect ile kullanılarak sayfa açılışında veri çekiliyor.
 
   useEffect(() => {
     fetch("/api/posts",{
@@ -47,6 +53,11 @@ const SearchBarComponent = ( ) => {
 
   },[]);
 
+
+  // Slide için gerekli yapı ve scoll
+
+ 
+
   const changeScrollColor = ({nativeEvent}) => {
     const slide = Math.ceil(nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width)
     if(slide !== active){
@@ -54,7 +65,9 @@ const SearchBarComponent = ( ) => {
     }
 }
 
+ // Aşağıda gerekli 2 görsel ve bir video içeren bir container oluşturdum ve return ettim.
 
+ // search işlemini modal ile yaparak recursive bir şekilde text girişi ve sayfa oluşturması işlemini çözmeye çalıştım.
   return (
     <SafeAreaView>
       <Searchbar style={styles.searchBar}

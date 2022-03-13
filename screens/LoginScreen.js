@@ -3,6 +3,15 @@ import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View,Image } from 'react-native'
 import { auth } from '../firebase'
 
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+
+  /* Login ve Signup işlemleri burada yer alıyor. */
+
+    /* firebase versiyon veya kullanımda bir sorun yaşadığım için home içine yönlendirme yaptım */
+
+
 const LoginScreen = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

@@ -2,9 +2,6 @@ import { useNavigation } from '@react-navigation/core'
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View,SafeAreaView, } from 'react-native'
 import { auth } from '../firebase'
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
 
 import Header from '../components/Header'
 import Posts from '../components/Posts'
@@ -22,7 +19,9 @@ const HomeScreen = ({navigation}) => {
       .catch(error => alert(error.message))
   }
 
-  /* Home screen carries the most of the components and screens for to show most the data */
+  /* Login ve Signup işlemleri burada yer alıyor. */
+  /* Home içinde direk navigasyon koymamın sebebi auth işleminde çok hakim olamam */
+  /* firebase versiyon veya kullanımda bir sorun yaşadığım için home içine yönlendirme yaptım */
 
   return (
     <SafeAreaView style={styles.container}>

@@ -15,6 +15,7 @@ const Header = ({navigation,user}) => {
   }
 
   const showSearchContent = () => {
+    // sadece navigasyon sağlayan pusula imgesi işlemi
     navigation.navigate('Search')
   }
 
@@ -30,6 +31,10 @@ const Header = ({navigation,user}) => {
         <SearchBarComponent />
 
         {/* Buraya Search Bar Eklenecek */}
+
+        {// aşağıda gördüğünüz yapılar ekranın en üst sağ köşesindeki butonlar
+        // istediğiniz search getirme yapısı yine pusula imgesinden açılan bir sayfada
+      }
             <View style={styles.rightHeaderContainer}>
                 <TouchableOpacity style={styles.ImageStyle}>
                 <Image style={[styles.ImageStyle]}
@@ -46,6 +51,8 @@ const Header = ({navigation,user}) => {
                 source={{uri:'https://icons-for-free.com/iconfiles/png/512/add+photo+plus+upload+icon-1320184027779532643.png'}}
                 />
                 </TouchableOpacity >
+                {// burada da sayfayı fonksiyonu görebilirsiniz.
+                }
                 <TouchableOpacity onPress={() => showSearchContent() } style={styles.ImageStyle}>
                 <Image style={[styles.ImageStyle]}
                 source={{uri:'https://cdn2.iconfinder.com/data/icons/instagram-outline/19/18-512.png'}}

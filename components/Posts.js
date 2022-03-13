@@ -45,6 +45,7 @@ const Posts = () => {
     var [active,setActive] = useState(0)
 
     useEffect(() => {
+      // postların gelmesi için ilk önce sayfa yüklenirken fetch işlemi sağlıyoruz.
       fetch("/api/posts",{
         headers : { 
           'Content-Type': 'application/json',
@@ -63,6 +64,7 @@ const Posts = () => {
     }
 
     const setCommentTextFunc = (index) => {
+      // bu yapı tamamen yeni bir yorum eklemek için oluşturulmuş işlem yapısı.
           setContentId(index)
           setEmojiState(true)
           setCommentList([...commentList,{'id':index,'comment':createCommenterUser() + ' : ' + commentText }]) /* +  emoji*/
